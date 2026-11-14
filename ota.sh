@@ -2,7 +2,8 @@
 set -e
 VERSION=$1
 EXTERNAL_URL=$2     # optional: direct download link if you host the zip elsewhere
-OUT=~/infinity/out/target/product/spes
+OUT=$(ls -td ~/*/out/target/product/spes 2>/dev/null | head -1)
+[ -z "$OUT" ] && { echo "No spes build found in any folder in your home"; exit 1; }
 ZIP=$(ls -t $OUT/*Infinity*.zip | head -1)
 NAME=$(basename "$ZIP")
 SIZE=$(stat -c%s "$ZIP")
