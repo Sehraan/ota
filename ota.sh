@@ -13,12 +13,12 @@ DATE=$(grep -m1 ro.build.date.utc $OUT/system/build.prop | cut -d= -f2)
 if [ -n "$EXTERNAL_URL" ]; then
   URL="$EXTERNAL_URL"
 else
-  gh release create "$VERSION" "$ZIP" -R nunchaii/ota --notes "InfinityX $VERSION spes" \
-    || gh release upload "$VERSION" "$ZIP" -R nunchaii/ota --clobber
+  gh release create "$VERSION" "$ZIP" -R sehraan/ota --notes "InfinityX $VERSION spes" \
+    || gh release upload "$VERSION" "$ZIP" -R sehraan/ota --clobber
   URL="https://github.com/nunchaii/ota/releases/download/$VERSION/$NAME"
 fi
 
-rm -rf ~/ota && git clone https://github.com/nunchaii/ota.git ~/ota
+rm -rf ~/ota && git clone https://github.com/sehraan/ota.git ~/ota
 cd ~/ota
 cat > spes.json <<EOF
 {
